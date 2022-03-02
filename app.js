@@ -53,7 +53,6 @@ const displayAllPhone = (phones) => {
         `;
         mainContainer.appendChild(div)
     }
-
 }
 
 const phoneDetails = (id) => {
@@ -64,7 +63,7 @@ const phoneDetails = (id) => {
 }
 
 const showPhonedetails = (phone) => {
-    console.log(phone);
+    // console.log(phone)
 
     const div = document.createElement('div')
     details.innerHTML = ''
@@ -80,14 +79,14 @@ const showPhonedetails = (phone) => {
                         <h4 class="card-title">Name: ${phone.name}  </h4>
                         <p class="card-title"> <strong>ChipSet: </strong> ${phone.mainFeatures.chipSet}</p>
                         <p class="card-title"> <strong>Display-Size: </strong> ${phone.mainFeatures.displaySize}</p>
-                        <p class="card-title"><strong>Memory: </strong> ${phone.mainFeatures.memory} </p
-                        <p class="card-title"><strong>Sensor: </strong> ${phone.mainFeatures.sensors} </p
-                        <p class="card-title"><strong> Bluetooth: </strong> ${phone.others.Bluetooth ? phone.others.Bluetooth : 'none'} </p
-                        <p class="card-title"><strong> GPS: </strong> ${phone.others.GPS ? phone.others.GPS : 'none'} </p
-                        <p class="card-title"><strong> NFC: </strong> ${phone.others.NFC ? phone.others.NFC : 'none'} </p
-                        <p class="card-title"><strong> Radio: </strong> ${phone.others.Radio ? phone.others.Radio : 'none'} </p
-                        <p class="card-title"><strong> USB: </strong> ${phone.others.USB ? phone.others.USB : 'none'} </p
-                        <p class="card-title"><strong> WLAN: </strong> ${phone.others.WLAN ? phone.others.WLAN : 'none'} </p
+                        <p class="card-title"><strong>Memory: </strong> ${phone.mainFeatures.memory} </p>
+                        <p class="card-title"><strong>Sensor: </strong> ${phone.mainFeatures.sensors} </p>
+                        <p class="card-title"><strong> Bluetooth: </strong> ${phone.others.Bluetooth} </p>
+                        <p class="card-title"><strong> GPS: </strong> ${phone.others.GPS} </p>
+                        <p class="card-title"><strong> NFC: </strong> ${phone.others.NFC} </p>
+                        <p class="card-title"><strong> Radio: </strong> ${phone.others.Radio} </p>
+                        <p class="card-title"><strong> USB: </strong> ${phone.others.USB} </p>
+                        <p class="card-title"><strong> WLAN: </strong> ${phone.others.WLAN} </p>
                         <p class="card-title"><strong>Release-Date: </strong> ${phone.releaseDate ? phone.releaseDate : 'No release date found!'}  </h5>
                         </div >
                     </div >
