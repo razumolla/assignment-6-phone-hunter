@@ -1,5 +1,6 @@
 
 const mainContainer = document.getElementById('main');
+const details = document.getElementById('details');
 
 const searchButton = () => {
     const input = document.getElementById('input-value');
@@ -8,10 +9,12 @@ const searchButton = () => {
     const error = document.getElementById('error');
     if (searchText == '') {
         error.innerText = 'Please input your phone name !!';
-        mainContainer.innerHTML = '';
+        mainContainer.innerHTML = ''; // phones clear for wrong input
+        details.innerHTML = ''; //details clear for wrong input
     }
     else {
-        mainContainer.innerHTML = '';
+        mainContainer.innerHTML = ''; //old phones clear for new search
+        details.innerHTML = ''; //details clear for new search
         fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
             .then(res => res.json())
             .then(data => {
@@ -49,8 +52,43 @@ const displayAllPhone = (phones) => {
 }
 
 const phoneDetails = (id) => {
-    console.log(id);
+    // console.log(id);
     fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
         .then(res => res.json())
-        .then(data => console.log(data.data))
+        .then(data => showPhonedetails(data.data))
+}
+
+const showPhonedetails = (phone) => {
+
+    console.log(phone);
+
+    const div = document.createElement('div')
+    // div.className = "mb-3";
+    details.innerHTML = ''
+    div.innerHTML = `
+        <div class="card mb-3  mx-auto w-100" >
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="${phone.image}" class="card-img-top" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h5 class="card-title">Brand: ${phone.brand}  </h5>
+                    <h5 class="card-title">Name: ${phone.name}  </h5>
+                    <p class="card-title"> <strong>ChipSet: </strong> ${phone.mainFeatures.chipSet}</p>
+                    <p class="card-title"> <strong>Display-Size: </strong> ${phone.mainFeatures.displaySize}</p>
+                    <p class="card-title"><strong>Memory: </strong> ${phone.mainFeatures.memory} </p
+                    <p class="card-title"><strong> Bluetooth: </strong> ${phone.others.Bluetooth} </p
+                    <p class="card-title"><strong> GPS: </strong> ${phone.others.GPS} </p
+                    <p class="card-title"><strong> NFC: </strong> ${phone.others.NFC} </p
+                    <p class="card-title"><strong> Radio: </strong> ${phone.others.Radio} </p
+                    <p class="card-title"><strong> USB: </strong> ${phone.others.USB} </p
+                    <p class="card-title"><strong> WLAN: </strong> ${phone.others.WLAN} </p
+                    <p class="card-title"><strong>Release-Date: </strong> ${phone.releaseDate ? phone.releaseDate : 'No release date found!'}  </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    details.appendChild(div)
 }
