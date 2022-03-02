@@ -3,13 +3,14 @@ const mainContainer = document.getElementById('main');
 const details = document.getElementById('details');
 
 const searchButton = () => {
+    document.getElementById('coverPicture').style.display = 'none'//spinner start
     document.getElementById('spinner').style.display = 'block'//spinner start
     const input = document.getElementById('input-value');
-    const searchText = (input.value).toLowerCase();
+    const searchText = (input.value).toLowerCase(); //input text to lower case convert
 
     const error = document.getElementById('error');
     if (searchText == '') {
-        error.innerText = 'Please input your phone name !!';
+        error.innerText = 'Please input your phone name';
         document.getElementById('spinner').style.display = 'none'//spinner add
         mainContainer.innerHTML = ''; // phones clear for wrong input
         details.innerHTML = ''; //details clear for wrong input
@@ -21,7 +22,7 @@ const searchButton = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.status == false) {
-                    error.innerText = 'Sorry!! Your phone is not Found'
+                    error.innerText = 'Sorry! Your phone is not Found'
                     document.getElementById('spinner').style.display = 'none'//spinner add
                 }
                 else {

@@ -1,6 +1,9 @@
 body{
     background-color: aliceblue;
 }
+.heading{
+    color: rgb(12, 151, 105);
+}
 
 #spinner {
     display: none;
